@@ -39,11 +39,11 @@ O aplicație web Full-Stack dezvoltată în **Java Spring Boot** pentru administ
 
 ##  Funcționalități Principale
 
-* **Gestiunea Călătorilor (CRUD):** * Adăugare, editare, vizualizare și ștergere călători.
+* **Gestiunea Călătorilor (CRUD):**  Adăugare, editare, vizualizare și ștergere călători.
   * Validări stricte: CNP-ul trebuie să aibă exact 13 cifre. Nu se pot înregistra doi călători cu același CNP sau Email.
-* **Gestiunea Sucursalelor (CRUD):** * Administrarea punctelor fizice de vânzare.
+* **Gestiunea Sucursalelor (CRUD):**  Administrarea punctelor fizice de vânzare.
   * Validare logică: Nu se pot adăuga două sucursale cu același nume în același oraș.
-* **Emiterea Biletelor (Tranzacțional):** * Formular dinamic cu dropdown-uri pre-populate din baza de date.
+* **Emiterea Biletelor (Tranzacțional):** Formular dinamic cu dropdown-uri pre-populate din baza de date.
   * **Sistem Anti-Double Booking:** Aplicația previne vânzarea aceluiași loc (Tren + Vagon + Loc + Dată) către două persoane diferite, afișând mesaje de eroare specifice.
 * **Interfață Modernă:** Design responsive și intuitiv, cu feedback vizual (erori evidențiate cu roșu) la introducerea greșită a datelor.
 
