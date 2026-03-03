@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="fas fa-store me-2"></i>{{ 'Editează' if sucursala else 'Adaugă' }} Sucursală</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Denumire Sucursală</label>
+                        <input type="text" name="denumire" class="form-control"
+                               value="{{ sucursala.denumire if sucursala }}" placeholder="ex: Gara de Nord - Agenția 1" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Oraș</label>
+                        <input type="text" name="oras" class="form-control"
+                               value="{{ sucursala.oras if sucursala }}" placeholder="ex: București" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Adresă Fizică</label>
+                        <textarea name="adresa" class="form-control" rows="3" placeholder="Strada, Număr...">{{ sucursala.adresa if sucursala }}</textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning text-dark fw-bold">Salvează Datele</button>
+                        <a href="/sucursale" class="btn btn-light text-muted">Anulează</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
