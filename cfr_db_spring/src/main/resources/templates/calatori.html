@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management Călători</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-train"></i> CFR Manager</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/calatori}">Călători</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/sucursale}">Sucursale</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/bilete}">Bilete</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1><i class="fas fa-users"></i> Lista Călători</h1>
+        <a th:href="@{/calatori/new}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Adaugă Călător
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nume Complet</th>
+                        <th>Email</th>
+                        <th>CNP</th>
+                        <th>Data Nașterii</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="calator : ${calatori}">
+                        <td th:text="${calator.idCalator}"></td>
+                        <td>
+                            <span class="fw-bold" th:text="${calator.nume + ' ' + calator.prenume}"></span>
+                        </td>
+                        <td th:text="${calator.email}"></td>
+                        <td th:text="${calator.cnp}"></td>
+                        <td th:text="${calator.dataNasterii}"></td>
+                        <td>
+                            <a th:href="@{/calatori/edit/{id}(id=${calator.idCalator})}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{/calatori/delete/{id}(id=${calator.idCalator})}" 
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Ești sigur că vrei să ștergi acest călător?');">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

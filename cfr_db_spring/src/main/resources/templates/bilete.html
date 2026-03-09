@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management Bilete</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-train"></i> CFR Manager</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/calatori}">Călători</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/sucursale}">Sucursale</a></li>
+                <li class="nav-item"><a class="nav-link active" th:href="@{/bilete}">Bilete</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1><i class="fas fa-ticket-alt"></i> Registru Bilete</h1>
+        <a th:href="@{/bilete/new}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Emite Bilet
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Rută</th>
+                        <th>Detalii Tren</th>
+                        <th>Data</th>
+                        <th>Călător</th>
+                        <th>Sucursala Emitentă</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="bilet : ${bilete}">
+                        <td th:text="${bilet.idBilet}"></td>
+                        <td>
+                            <span class="badge bg-info text-dark" th:text="${bilet.plecare}"></span> 
+                            <i class="fas fa-arrow-right mx-1 text-muted"></i> 
+                            <span class="badge bg-warning text-dark" th:text="${bilet.destinatie}"></span>
+                        </td>
+                        <td>
+                            <div th:text="'Tren: ' + ${bilet.nrTren}"></div>
+                            <small class="text-muted" th:text="'Vag: ' + ${bilet.nrVagon} + ' | Loc: ' + ${bilet.nrLoc}"></small>
+                        </td>
+                        <td th:text="${bilet.dataCalatoriei}"></td>
+                        <td>
+                            <span th:text="${bilet.calator.nume + ' ' + bilet.calator.prenume}"></span>
+                        </td>
+                        <td>
+                            <i class="fas fa-map-marker-alt text-danger"></i>
+                            <span th:text="${bilet.sucursala.denumire}"></span>
+                        </td>
+                        <td>
+                            <a th:href="@{/bilete/edit/{id}(id=${bilet.idBilet})}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{/bilete/delete/{id}(id=${bilet.idBilet})}" 
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Anulezi acest bilet?');">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
