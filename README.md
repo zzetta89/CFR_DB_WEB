@@ -1,4 +1,4 @@
-#  CFR Manager - Aplicație Web de Gestiune Feroviară (python)
+#  CFR Manager - Aplicație Web de Gestiune Feroviară (Python)
 
 CFR Manager este o aplicație web dezvoltată în Python folosind framework-ul Flask, menită să digitalizeze și să simplifice gestionarea biletelor de tren, a călătorilor și a sucursalelor CFR. 
 
